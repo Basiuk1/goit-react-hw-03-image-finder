@@ -58,6 +58,8 @@ export default class App extends Component {
 
   render() {
     const { images, isLoading, showModal, selectedImage } = this.state;
+    const showButton =
+      images.length > 0 && images.length % 12 === 0 && !isLoading;
 
     return (
       <div>
@@ -65,7 +67,7 @@ export default class App extends Component {
         <ImageGallery images={images} onImageClick={this.handleImageClick} />
         {isLoading && <Loader />}
         {images.length > 0 && !isLoading && (
-          <Button onLoadMore={this.handleLoadMore} />
+          <Button onLoadMore={this.handleLoadMore} showButton={showButton} />
         )}
         {showModal && (
           <Modal
