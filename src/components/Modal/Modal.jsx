@@ -26,9 +26,15 @@ export default class Modal extends Component {
     }
   };
 
+  onClickBackdrop = evt => {
+    if (evt.currentTarget === evt.target) {
+      this.props.onCloseModal();
+    }
+  };
+
   render() {
     return (
-      <Overlay>
+      <Overlay onClick={this.onClickBackdrop}>
         <ModalStyle>
           <img src={this.props.selectedImage.largeImageURL} alt="" />
         </ModalStyle>
